@@ -1,13 +1,17 @@
 # api/index.py
 from flask import Flask, jsonify, request, send_file
+
 from flask_cors import CORS
+
+
+
 import yt_dlp
 import os
 import uuid
 import tempfile
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 @app.route('/api/info', methods=['POST'])
 def get_video_info():
